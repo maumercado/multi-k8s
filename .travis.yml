@@ -15,7 +15,7 @@ before_install:
   - gcloud config set compute/zone us-west1-c
   - gcloud container clusters get-credentials kubicio
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t maumercado/react-test -f ./client/Dockerfile.dev
+  - docker build -f ./client/Dockerfile.dev -t maumercado/react-test ./client
 
 script:
   - docker run -e CI=true maumercado/docker-react npm run test
